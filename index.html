@@ -5,74 +5,141 @@
   <title>P2P Maricá - Central de Downloads</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #182642 0, #050710 45%, #020308 100%);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 20px;
-      background: #050710;
-      font-family: Arial, sans-serif;
-      color: #fff;
       text-align: center;
     }
 
+    .card {
+      width: 100%;
+      max-width: 480px;
+      padding: 22px 18px 24px;
+      background: rgba(3, 8, 20, 0.96);
+      border-radius: 18px;
+      border: 1px solid rgba(0, 140, 255, 0.35);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.8);
+    }
+
     .logo {
-      width: 200px;
-      margin: 0 auto 20px;
+      width: 220px;
+      max-width: 70%;
+      display: block;
+      margin: 0 auto 10px;
     }
 
     h1 {
-      margin-top: 10px;
-      font-size: 22px;
-      font-weight: bold;
+      font-size: 20px;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: #b4c0d6;
+      margin-bottom: 18px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 6px;
     }
 
     .btn {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       width: 100%;
-      max-width: 320px;
-      background: #0a1a2a;
-      padding: 14px;
-      margin: 10px auto;
-      border-radius: 10px;
+      padding: 13px 12px;
+      border-radius: 12px;
       border: 1px solid #007bff;
+      background: linear-gradient(135deg, rgba(2, 18, 40, 0.95), rgba(3, 35, 70, 0.95));
+      color: #ffffff;
       text-decoration: none;
-      color: #fff;
-      font-size: 16px;
-      font-weight: bold;
+      font-size: 14px;
+      font-weight: 600;
     }
 
-    .btn:hover {
-      background: #0f2438;
+    .btn span.icon {
+      font-size: 18px;
+    }
+
+    .btn:hover,
+    .btn:focus {
+      outline: 2px solid rgba(0, 140, 255, 0.8);
+      outline-offset: 2px;
+      background: linear-gradient(135deg, rgba(4, 28, 60, 0.98), rgba(6, 46, 90, 0.98));
     }
 
     footer {
-      margin-top: 30px;
-      color: #777;
-      font-size: 13px;
+      margin-top: 18px;
+      font-size: 11px;
+      color: #7e8696;
     }
   </style>
 </head>
 <body>
 
-  <!-- LOGO -->
-  <img src="LOGO PNG.png" alt="Logo P2P Maricá" class="logo">
+  <div class="card">
+    <!-- LOGO -->
+    <img src="logo-p2p.png" alt="Logo P2P Maricá" class="logo">
 
-  <h1>P2P MARICÁ - DOWNLOAD DE APPS</h1>
+    <h1>P2P MARICÁ - DOWNLOAD DE APPS</h1>
+    <p class="subtitle">
+      Clique em um dos botões abaixo para baixar o app na sua TV Box ou Android.
+    </p>
 
-  <a class="btn" href="https://download2391.mediafire.com/8jja0b7tgkpgVe6qECnMvuXX5lceJOdArG9KhROgIx-ZR0i_UGrPP7avtjfx3qs8-Blj9KFA8puj46nUgcZskqOt-Et-HoyY2TR4SvYcKdlbElc_5hPVF2-qQ8nCQCeBnBpG0fu0xXYzZGXSjrQqeWqYl1QHAmbua4YBY3Kp2f0-/nh96mmoqmfmyv4k/Iplayplus20250830.apk">📺 Iplay Plus</a>
+    <div class="buttons">
+      <a class="btn" href="https://download2391.mediafire.com/8jja0b7tgkpgVe6qECnMvuXX5lceJOdArG9KhROgIx-ZR0i_UGrPP7avtjfx3qs8-Blj9KFA8puj46nUgcZskqOt-Et-HoyY2TR4SvYcKdlbElc_5hPVF2-qQ8nCQCeBnBpG0fu0xXYzZGXSjrQqeWqYl1QHAmbua4YBY3Kp2f0-/nh96mmoqmfmyv4k/Iplayplus20250830.apk">
+        <span class="icon">📺</span>
+        <span>Iplay Plus</span>
+      </a>
 
-  <a class="btn" href="https://download2332.mediafire.com/5d1u10c7nt2gCNCQ1-P3nO5uFbY5DDzJhN9yjAW4rOJ5dFkgWozGRp3tNtEEGhARJecMs28mvEgU6bBp3xSW9czwL2MS524oxv7H4BDctsUbstwcOvRzmkXUKdEBMANFTGelYbYkGcsZQSUi6cLIj-wW2Ekci6f0AI-AeWi-MtEP/dxg145r3flgzqp7/iplayLite202511271800.apk">📡 Iplay Lite (Somente Canais)</a>
+      <a class="btn" href="https://download2332.mediafire.com/5d1u10c7nt2gCNCQ1-P3nO5uFbY5DDzJhN9yjAW4rOJ5dFkgWozGRp3tNtEEGhARJecMs28mvEgU6bBp3xSW9czwL2MS524oxv7H4BDctsUbstwcOvRzmkXUKdEBMANFTGelYbYkGcsZQSUi6cLIj-wW2Ekci6f0AI-AeWi-MtEP/dxg145r3flgzqp7/iplayLite202511271800.apk">
+        <span class="icon">📡</span>
+        <span>Iplay Lite (Somente Canais)</span>
+      </a>
 
-  <a class="btn" href="https://download2393.mediafire.com/wxzs3fas82gge3S_gF4dGyI2uNKDZPhmGRFHcFMm1HYhzKIPP4jp5rawPDYQD1_dNNiVu0hTLqD_76CUzRuePpVCsTR_L6Q1zVmyc37Fa73xFT7ccIDElmkYmpquP009U--btm7wo6QH_Mz1vzbLN_iRN_g7j6_uD5beqSctQUff/wy0jjvkhy8lkm6n/WPlay+P2P+BinStream.apk">📺 WPlay / Wapptv</a>
+      <a class="btn" href="https://download2393.mediafire.com/wxzs3fas82gge3S_gF4dGyI2uNKDZPhmGRFHcFMm1HYhzKIPP4jp5rawPDYQD1_dNNiVu0hTLqD_76CUzRuePpVCsTR_L6Q1zVmyc37Fa73xFT7ccIDElmkYmpquP009U--btm7wo6QH_Mz1vzbLN_iRN_g7j6_uD5beqSctQUff/wy0jjvkhy8lkm6n/WPlay+P2P+BinStream.apk">
+        <span class="icon">📺</span>
+        <span>WPlay / Wapptv</span>
+      </a>
 
-  <a class="btn" href="https://download943.mediafire.com/hvor23ham6lgr5w7GojiO-ytm2hGRy8Sf1IiLoaIWW2qhXda4h3Rh3BBxiztC5KSBS1axU7bozWHj6q1IBd6qNNaE4HHi3g-gUm7UX3u08AH50h-4I2G55S9hdbSB2588J561oT1gAiQVGts9lnasgfqwZs65Y7YSyQVJxO6rRLn/nrn8v6kbh604d5p/YouCine.apk">🎬 YouCine (Filmes & Séries)</a>
+      <a class="btn" href="https://download943.mediafire.com/hvor23ham6lgr5w7GojiO-ytm2hGRy8Sf1IiLoaIWW2qhXda4h3Rh3BBxiztC5KSBS1axU7bozWHj6q1IBd6qNNaE4HHi3g-gUm7UX3u08AH50h-4I2G55S9hdbSB2588J561oT1gAiQVGts9lnasgfqwZs65Y7YSyQVJxO6rRLn/nrn8v6kbh604d5p/YouCine.apk">
+        <span class="icon">🎬</span>
+        <span>YouCine (Filmes & Séries)</span>
+      </a>
 
-  <a class="btn" href="https://download2361.mediafire.com/kcbuaqn04wfgh_CK75erSePUi5yKsnOVpYOrQn1CoHgKwUj9AarAtgF7P6duS0qaiNZtg_hubjIpiGkPe9x-0QDtPyJCF259lfOFT3Tqm7-IdiK6YIriSLNqn_7DIV-091Iyt1iOFJsz7tbTmPtz63_F0nlDZJTXhvCY7kva7D0k/lq2kpfyncdppp5k/unitv_RS-NPWN.apk">📡 Unitv</a>
+      <a class="btn" href="https://download2361.mediafire.com/kcbuaqn04wfgh_CK75erSePUi5yKsnOVpYOrQn1CoHgKwUj9AarAtgF7P6duS0qaiNZtg_hubjIpiGkPe9x-0QDtPyJCF259lfOFT3Tqm7-IdiK6YIriSLNqn_7DIV-091Iyt1iOFJsz7tbTmPtz63_F0nlDZJTXhvCY7kva7D0k/lq2kpfyncdppp5k/unitv_RS-NPWN.apk">
+        <span class="icon">📡</span>
+        <span>Unitv</span>
+      </a>
 
-  <a class="btn" href="https://download1476.mediafire.com/oex85oc0drigGsPpP8aSSB53NSNQOFn-hI6ycnBXqJRhegrpl2Do257PP3F9sPvGPJusEfvu30yPJ7EngX_uPK-_V1aHD6jDcu50quT1lhjTwN9hb2jZxFqi5H6Xp6leABUwRQajxW3PE8bVsDbkaKnWtgCcxfFZtIDlAI2C-ySw/vy72jx5ca8nt91w/Krator%2B+Android+TV.apk">🎮 Krator Android TV</a>
+      <a class="btn" href="https://download1476.mediafire.com/oex85oc0drigGsPpP8aSSB53NSNQOFn-hI6ycnBXqJRhegrpl2Do257PP3F9sPvGPJusEfvu30yPJ7EngX_uPK-_V1aHD6jDcu50quT1lhjTwN9hb2jZxFqi5H6Xp6leABUwRQajxW3PE8bVsDbkaKnWtgCcxfFZtIDlAI2C-ySw/vy72jx5ca8nt91w/Krator%2B+Android+TV.apk">
+        <span class="icon">🎮</span>
+        <span>Krator Android TV</span>
+      </a>
+    </div>
 
-  <footer>
-    P2P Maricá © Todos os direitos reservados
-  </footer>
+    <footer>
+      P2P Maricá © Todos os direitos reservados
+    </footer>
+  </div>
 
 </body>
 </html>
