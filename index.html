@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>P2P Maricá – Central de Apps</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #050710;
+      --card: #101325;
+      --accent: #00a8ff;
+      --accent-soft: #103044;
+      --text: #f5f5f5;
+      --muted: #b0b0b0;
+      --danger: #ff4d4f;
+      --success: #00c853;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #151b3a 0, #050710 55%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 960px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.02), rgba(0,0,0,0.7));
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.75);
+      padding: 18px 14px 22px;
+    }
+
+    @media (min-width: 720px) {
+      .container {
+        padding: 24px 24px 28px;
+      }
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .logo-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .logo-circle {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffffff, #c0c0c0 35%, #404040 80%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 22px rgba(255,255,255,0.25);
+    }
+
+    .logo-text-main {
+      font-weight: 900;
+      font-size: 15px;
+      letter-spacing: 1px;
+      color: #101010;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.1;
+    }
+
+    .logo-text-sub {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      opacity: 0.95;
+    }
+
+    h1 {
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .alert {
+      margin: 14px auto 16px;
+      max-width: 640px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(0,0,0,0.7));
+      border: 1px solid rgba(255,255,255,0.18);
+      font-size: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .alert-icon {
+      font-size: 16px;
+      margin-top: 1px;
+    }
+
+    .alert strong {
+      color: #ffffff;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    @media (min-width: 720px) {
+      .grid {
+        grid-template-columns: 2fr 1.3fr;
+        align-items: flex-start;
+      }
+    }
+
+    .card {
+      background: rgba(0,0,0,0.6);
+      border-radius: 14px;
+      padding: 12px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .card h2 {
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .apk-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .apk-item {
+      border-radius: 12px;
+      padding: 10px 11px;
+      background: linear-gradient(135deg, rgba(0,168,255,0.12), rgba(0,0,0,0.9));
+      border: 1px solid rgba(0,168,255,0.4);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .apk-headline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .apk-tag {
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .apk-tag-main {
+      border-color: var(--success);
+      color: var(--success);
+    }
+
+    .apk-tag-extra {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .apk-info {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .btn-download {
+      margin-top: 3px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 12px;
+      width: 100%;
+      border-radius: 999px;
+      border: none;
+      background: radial-gradient(circle at 30% 0, rgba(255,255,255,0.25), rgba(0,168,255,0.25) 40%, rgba(0,0,0,1) 100%);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.7);
+      cursor: pointer;
+    }
+
+    .btn-download span {
+      font-size: 16px;
+    }
+
+    .btn-download:focus,
+    .btn-download:hover {
+      outline: 2px solid rgba(0,168,255,0.7);
+      outline-offset: 2px;
+    }
+
+    .steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-top: 6px;
+      font-size: 12px;
+    }
+
+    .steps li {
+      display: flex;
+      gap: 6px;
+      align-items: flex-start;
+    }
+
+    .steps span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.3);
+      font-size: 11px;
+      margin-top: 1px;
+    }
+
+    .support-box {
+      margin-top: 10px;
+      padding: 9px 10px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 0 0, rgba(0,200,83,0.2), rgba(0,0,0,0.95));
+      border: 1px solid rgba(0,200,83,0.6);
+      font-size: 12px;
+    }
+
+    .support-box a {
+      color: #00e676;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .support-box a:focus,
+    .support-box a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--muted);
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo-area">
+        <!-- Logo simples em forma de círculo prata (pode trocar pela sua imagem depois) -->
+        <div class="logo-circle">
+          <div class="logo-text-main">
+            P2P<br/>MARICÁ
+          </div>
+        </div>
+        <div class="logo-text-sub">Central de Apps • TV Box & Android</div>
+      </div>
+
+      <h1>P2P Maricá – Central de Apps</h1>
+      <p class="subtitle">
+        Acesse pelo navegador da sua TV Box e baixe os aplicativos oficiais da P2P Maricá com segurança.
+      </p>
+
+      <div class="alert">
+        <div class="alert-icon">⚠️</div>
+        <div>
+          <strong>Dica importante:</strong> Se a TV pedir permissão para baixar arquivos “.apk”, escolha
+          <strong>Permitir</strong>. Depois de baixar, vá em <strong>Arquivos / Download</strong> e instale o app.
+        </div>
+      </div>
+    </header>
+
+    <main class="grid">
+      <!-- COLUNA ESQUERDA – DOWNLOADS -->
+      <section class="card">
+        <h2>📥 Baixar aplicativos</h2>
+        <p>Escolha abaixo o app que deseja instalar. Todos são compatíveis com TV Box Android.</p>
+
+        <div class="apk-list">
+          <!-- APP PRINCIPAL -->
+          <div class="apk-item">
+            <div class="apk-headline">
+              <div>App Principal P2P Maricá</div>
+              <div class="apk-tag apk-tag-main">Oficial</div>
+            </div>
+            <div class="apk-info">
+              Versão estável recomendada para a maioria dos clientes.
+            </div>
+            <a
+              class="btn-download"
+              href="https://SEU_LINK_DE_DOWNLOAD_DO_APK_PRINCIPAL.com/app.apk"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>⬇</span> Baixar App Principal
+            </a>
+          </div>
+
+          <!-- PLAYER 1 -->
+          <div class="apk-item">
+            <div class="apk-headline">
+              <div>Player 1 (Recomendado)</div>
+              <div class="apk-tag apk-tag-extra">Player Extra</div>
+            </div>
+            <div class="apk-info">
+              Indicado para quem quer mais estabilidade em canais ao vivo e esportes.
+            </div>
+            <a
+              class="btn-download"
+              href="https://SEU_LINK_DE_DOWNLOAD_DO_PLAYER1.com/player1.apk"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>⬇</span> Baixar Player 1
+            </a>
+          </div>
+
+          <!-- PLAYER 2 -->
+          <div class="apk-item">
+            <div class="apk-headline">
+              <div>Player 2 (Alternativo)</div>
+              <div class="apk-tag apk-tag-extra">Player Extra</div>
+            </div>
+            <div class="apk-info">
+              Opção extra caso o Player 1 não funcione bem na sua TV Box.
+            </div>
+            <a
+              class="btn-download"
+              href="https://SEU_LINK_DE_DOWNLOAD_DO_PLAYER2.com/player2.apk"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>⬇</span> Baixar Player 2
+            </a>
+          </div>
+
+          <!-- OUTRO APP OPCIONAL -->
+          <div class="apk-item">
+            <div class="apk-headline">
+              <div>Utilitário de Limpeza (Opcional)</div>
+              <div class="apk-tag">Extra</div>
+            </div>
+            <div class="apk-info">
+              Ajuda a limpar memória e deixar a TV Box mais leve para rodar os apps.
+            </div>
+            <a
+              class="btn-download"
+              href="https://SEU_LINK_DE_DOWNLOAD_DO_UTILITARIO.com/limpeza.apk"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>⬇</span> Baixar Utilitário
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- COLUNA DIREITA – PASSO A PASSO / SUPORTE -->
+      <aside class="card">
+        <h2>📺 Como instalar na TV Box</h2>
+        <p>
+          Siga esse passo a passo usando o controle da TV Box. Os botões são grandes e fáceis de clicar.
+        </p>
+
+        <ul class="steps">
+          <li>
+            <span>1</span>
+            <div>
+              Abra o <strong>navegador</strong> da sua TV Box (geralmente chamado de "Browser", "Internet" ou "Chrome").
+            </div>
+          </li>
+          <li>
+            <span>2</span>
+            <div>
+              Digite o endereço deste site na barra: <br/>
+              <strong>seusite.github.io</strong> (troque pelo link oficial que a P2P Maricá te enviou).
+            </div>
+          </li>
+          <li>
+            <span>3</span>
+            <div>
+              Use as setas do controle para descer até a lista de apps e aperte <strong>OK</strong> no app que deseja
+              baixar.
+            </div>
+          </li>
+          <li>
+            <span>4</span>
+            <div>
+              Quando o download terminar, vá em <strong>Arquivos</strong> ou <strong>Meus Apps &gt; Download</strong> e
+              instale o arquivo <strong>.apk</strong>.
+            </div>
+          </li>
+          <li>
+            <span>5</span>
+            <div>
+              Se aparecer aviso de segurança, clique em <strong>Permitir</strong> ou
+              <strong>Instalar assim mesmo</strong>. Depois é só abrir o app, colocar login/senha e aproveitar.
+            </div>
+          </li>
+        </ul>
+
+        <div class="support-box">
+          💬 <strong>Precisa de ajuda?</strong><br/>
+          Chame o suporte da P2P Maricá no WhatsApp:<br/>
+          <a href="https://wa.me/5521SEU_NUMERO_AQUI" target="_blank" rel="noopener noreferrer">
+            👉 Falar com o suporte agora
+          </a>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      P2P Maricá • Streaming & TV Box • Este site é apenas para distribuição de aplicativos oficiais aos clientes.
+    </footer>
+  </div>
+</body>
+</html>
